@@ -1,0 +1,8 @@
+name: CustomMenu
+main: com.toteltwent.custommenu.CMMain
+version: 0.0.1
+
+commands:
+   custommenu:
+      description: Main command for cm.
+      usage: /<command>
