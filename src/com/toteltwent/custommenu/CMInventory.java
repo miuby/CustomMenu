@@ -23,7 +23,7 @@ public class CMInventory {
 	public void open(String title, Player player){
 		Inventory menuInventory = Bukkit.createInventory((InventoryHolder)null, (getNumLines()*9), title);
 		for(CMObjectItem item : getItems().values()){
-			item.display(menuInventory);
+			item.display(player, menuInventory);
 		}
 		player.openInventory(menuInventory);
 		player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);

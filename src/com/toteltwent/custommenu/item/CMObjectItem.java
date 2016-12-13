@@ -1,10 +1,13 @@
 package com.toteltwent.custommenu.item;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.PluginManager;
 
+import com.toteltwent.custommenu.CMDisplayEvent;
 import com.toteltwent.custommenu.CMInventory;
 
 public abstract class CMObjectItem {
@@ -16,9 +19,20 @@ public abstract class CMObjectItem {
 	protected String[] param;
 	protected CMInventory inventory;
 	
-	public abstract void display(Inventory inventory);
+	public void display(Player player, Inventory inventory){
+		callEvent(player);
+		internalDisplay(player, inventory);
+	}
 	
 	public abstract void action(Player player, Inventory inventory, ClickType clickType);
+	
+	protected abstract void internalDisplay(Player player, Inventory inventory);
+	
+	public void callEvent(Player player){
+		CMDisplayEvent event = new CMDisplayEvent(player, param[0], this);
+		PluginManager pm = Bukkit.getServer().getPluginManager();
+		pm.callEvent(event);
+	}
 	
 	public ItemStack getItemStack() {
 		return itemStack;

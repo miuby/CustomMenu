@@ -18,7 +18,7 @@ public class CMSwitchItem extends CMObjectItem {
 	private int numSwitch = 0;
 	
 	@Override
-	public void display(Inventory inventory) {
+	public void internalDisplay(Player player, Inventory inventory) {
 		createList();
 		
 		if(numSwitch == Integer.valueOf(param[1])){
@@ -36,7 +36,7 @@ public class CMSwitchItem extends CMObjectItem {
 		
 		for(CMSwitchItem switchItem : switchItems){
 			switchItem.setNumSwitch(numSwitch);
-			switchItem.display(inventory);
+			switchItem.display(player, inventory);
 		}
 		
 		CMSwitchEvent event = new CMSwitchEvent(player, param[0], numSwitch);

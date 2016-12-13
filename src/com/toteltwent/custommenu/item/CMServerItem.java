@@ -18,7 +18,7 @@ public class CMServerItem extends CMObjectItem {
 	private int playerCount;
 	
 	@Override
-	public void display(Inventory inventory) {
+	public void internalDisplay(Player player, Inventory inventory) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("PlayerCount");
 		out.writeUTF(param[0]);

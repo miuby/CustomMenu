@@ -10,7 +10,7 @@ import com.toteltwent.custommenu.utils.CMUtils;
 public class CMMenuItem extends CMObjectItem {
 
 	@Override
-	public void display(Inventory inventory) {
+	public void internalDisplay(Player player, Inventory inventory) {
 		inventory.setItem(position, CMUtils.mergeItemMeta(itemStack, name, description));
 	}
 
